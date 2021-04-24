@@ -1,0 +1,547 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/1px.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Ground.gd" type="Script" id=4]
+[ext_resource path="res://assets/moon.png" type="Texture" id=5]
+[ext_resource path="res://assets/physics_materials/ground.tres" type="PhysicsMaterial" id=6]
+[ext_resource path="res://scripts/RopeBridge.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Segment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/physics_materials/ice.tres" type="PhysicsMaterial" id=9]
+[ext_resource path="res://assets/bubble.png" type="Texture" id=10]
+[ext_resource path="res://assets/light.png" type="Texture" id=11]
+[ext_resource path="res://assets/sign.png" type="Texture" id=12]
+[ext_resource path="res://scripts/Sign.gd" type="Script" id=13]
+[ext_resource path="res://assets/skull.png" type="Texture" id=14]
+[ext_resource path="res://assets/bone.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 121.215, 95.9982 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16.2293, 14.0394 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 3.96457
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 1.84986
+height = 5.59076
+
+[sub_resource type="OccluderPolygon2D" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=2]
+
+[sub_resource type="DynamicFontData" id=5]
+antialiased = false
+font_path = "res://assets/font/quaver.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 7
+font_data = SubResource( 5 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 0.352941, 0.352941, 0.352941, 1 )
+position = Vector2( 503.184, 304.813 )
+scale = Vector2( 1896.9, 926.956 )
+texture = ExtResource( 1 )
+
+[node name="Moon" type="Light2D" parent="Background"]
+position = Vector2( 0.415619, -3.47949 )
+rotation = 3.14158
+scale = Vector2( 0.00263589, 0.005394 )
+texture = ExtResource( 5 )
+texture_scale = 10.0
+mode = 2
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3.63187, -13.4207 )
+
+[node name="Env" type="Node2D" parent="."]
+position = Vector2( -624.194, -752.723 )
+
+[node name="Water" type="Node2D" parent="Env"]
+position = Vector2( 1119.19, 408.723 )
+
+[node name="A" type="Node2D" parent="Env/Water"]
+position = Vector2( -144, 320 )
+
+[node name="Sprite" type="Sprite" parent="Env/Water/A"]
+modulate = Color( 0, 0.619608, 1, 0.0901961 )
+scale = Vector2( 241.439, 191.865 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Env/Water/A"]
+modulate = Color( 0.427451, 0.678431, 0.752941, 0.4 )
+position = Vector2( 0, -96 )
+scale = Vector2( 241.439, 1 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Env/Water/A"]
+space_override = 3
+gravity_vec = Vector2( 0, -1 )
+gravity = 25.0
+linear_damp = 3.0
+angular_damp = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Water/A/Area2D"]
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="Env/Water/A"]
+position = Vector2( -55, -49 )
+amount = 20
+lifetime = 3.0
+lifetime_randomness = 0.5
+texture = ExtResource( 10 )
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2( 0, -10 )
+angular_velocity = 45.72
+angular_velocity_random = 1.0
+scale_amount = 0.1
+scale_amount_random = 0.5
+color = Color( 0.560784, 0.737255, 0.760784, 1 )
+
+[node name="GlowShrooms" type="Node2D" parent="Env"]
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms"]
+position = Vector2( 1048.17, 563.721 )
+texture = ExtResource( 11 )
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+energy = 0.75
+
+[node name="Shroom" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1057.93, 582.401 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom2" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1053.02, 584.995 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom2"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom3" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1048.8, 587.245 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom3"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom3"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom4" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1063.74, 579.026 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom4"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom4"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom5" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1042.74, 592.558 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom5"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom5"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom7" type="Node2D" parent="Env/GlowShrooms"]
+position = Vector2( 1072.02, 578.37 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms/Shroom7"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms/Shroom7"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Signs" type="Node2D" parent="Env"]
+
+[node name="A" type="Area2D" parent="Env/Signs" groups=[
+"sign",
+]]
+position = Vector2( 128, 220 )
+script = ExtResource( 13 )
+text = "Welcome to the Sanisville cave system! Session are currently suspended due to renovations. No entry permitted."
+
+[node name="Sprite" type="Sprite" parent="Env/Signs/A"]
+texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/A"]
+shape = SubResource( 4 )
+
+[node name="B" type="Area2D" parent="Env/Signs" groups=[
+"sign",
+]]
+position = Vector2( 1001, 447 )
+script = ExtResource( 13 )
+text = "Intermediate route begins here. Have you had your equipment checked by one of our friendly guides?"
+
+[node name="Sprite" type="Sprite" parent="Env/Signs/B"]
+texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/B"]
+shape = SubResource( 4 )
+
+[node name="C" type="Area2D" parent="Env/Signs" groups=[
+"sign",
+]]
+position = Vector2( 854, 627 )
+script = ExtResource( 13 )
+text = "Be careful up ahead, there are... *the sign has been damaged and this section is unreadable* ... is STRICTLY PROHIBITED."
+
+[node name="Sprite" type="Sprite" parent="Env/Signs/C"]
+texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/C"]
+shape = SubResource( 4 )
+
+[node name="Bones" type="Node2D" parent="Env"]
+
+[node name="Skull" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 568, 704 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Skull"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Skull"]
+shape = SubResource( 7 )
+
+[node name="Bone" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 560, 712 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Bone"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone"]
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Bone2" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 568, 712 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Bone2"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone2"]
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Bone3" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 576, 712 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Bone3"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone3"]
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Bone4" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 544, 712 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Bone4"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone4"]
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="Bone5" type="RigidBody2D" parent="Env/Bones"]
+position = Vector2( 552, 712 )
+mass = 0.1
+
+[node name="Sprite" type="Sprite" parent="Env/Bones/Bone5"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone5"]
+rotation = 1.5708
+shape = SubResource( 8 )
+
+[node name="GroundSegment" type="StaticBody2D" parent="Env"]
+position = Vector2( -130, 96 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment"]
+position = Vector2( 0, -0.222717 )
+polygon = PoolVector2Array( 135.134, 110.523, 116.492, 105.804, 101.51, 108.379, 78.0294, 106.511, 60.5403, 106.087, 29.1114, 101.597, 20.4531, 82.2067, 7.23886, 74.6557, 4.40724, 41.8561, 6.53096, 20.8549, -1.02005, 8.34852, -18.7177, 9.52837, -34.5276, 37.3727, -36.6513, 127.277, -19.2727, 180.288, 31.7467, 281.905, 163.723, 298.284, 199.631, 379.864, 339.482, 413.567, 624.16, 471.384, 687.013, 491.781, 699.911, 505.472, 708.244, 508.846, 715.586, 523.529, 720.745, 515.394, 721.142, 525.117, 725.507, 521.545, 730.667, 522.14, 732.849, 528.49, 741.183, 516.981, 747.136, 517.378, 750.311, 522.14, 752.493, 561.627, 755.47, 509.639, 760.827, 508.647, 763.605, 512.417, 767.772, 559.047, 771.741, 523.728, 778.289, 511.227, 780.471, 516.386, 785.63, 514.203, 789.996, 522.14, 792.377, 539.205, 794.361, 517.576, 798.329, 515.195, 801.703, 519.164, 806.266, 530.077, 808.846, 524.72, 814.227, 523.767, 818.722, 530.697, 820.595, 573.398, 824.341, 517.212, 828.166, 515.569, 831.944, 542.945, 835.747, 505.385, 839.283, 499.021, 840.52, 534.2, 842.111, 551.347, 845.116, 538.796, 849.005, 548.342, 850.419, 533.67, 848.121, 521.295, 848.652, 503.618, 852.894, 509.628, 856.253, 514.931, 859.612, 524.477, 861.026, 554.706, 864.562, 503.971, 867.92, 500.436, 872.34, 501.319, 875.345, 504.678, 878.704, 522.002, 879.588, 509.098, 882.593, 527.836, 885.068, 507.86, 887.543, 521.295, 888.957, 503.794, 892.846, 503.618, 895.144, 509.098, 897.796, 529.781, 899.033, 502.38, 901.331, 499.375, 904.336, 501.673, 906.811, 522.709, 909.809, 497.952, 918.943, 512.756, 923.983, 503.936, 932.374, 512.693, 944.388, 502.348, 997.475, 500.599, 1005.8, 499.41, 1018.29, 497.626, 1022.3, 500.896, 1027.35, 504.315, 1030.48, 507.585, 1031.52, 523.788, 1032.41, 519.775, 1035.53, 509.369, 1037.61, 510.41, 1038.35, 515.018, 1038.8, 531.815, 1040.44, 517.099, 1041.71, 510.266, 1042.98, 506.272, 1042.24, 515.417, 1042.34, 519.306, 1042.57, 522.309, 1043.57, 532.487, 1051.08, 536.825, 1048.58, 539.662, 1056.34, 542.221, 1053.92, 545.502, 1057.52, 549.667, 1064.85, 548.377, 1071.96, 548.771, 1079.81, 549.437, 1086.04, 550.232, 1094.25, 550.232, 1101.14, 549.569, 1108.82, 548.907, 1116.41, 545.564, 1119.56, 539.895, 1120.82, 531.863, 1124.29, 523.201, 1127.12, 518.003, 1133.89, 511.704, 1138.78, 508.712, 1146.65, 508.554, 1154.21, 509.971, 1158.93, 510.129, 1163.03, 508.869, 1167.6, 501.624, 1171.53, 495.325, 1179.09, 489.183, 1193.74, 481.781, 1221.65, 482.327, 1246.03, 480.543, 1255.69, 484.26, 1261.37, 487.758, 1264.72, 492.213, 1270.51, 494.885, 1275.85, 496.89, 1281.05, 496.261, 1295.9, 490.588, 1304.91, 480.41, 1314.09, 465.726, 1316.53, 447.029, 1316.77, 435.938, 1314.41, 422.488, 1310.16, 405.734, 1308.51, 388.273, 1304.97, 376.946, 1300.48, 365.148, 1297.33, 352.9, 1295.83, 344.659, 1293.02, 338.291, 1289.28, 333.609, 1284.03, 328.365, 1278.24, 315.486, 1275.99, 310.898, 1272.81, 307.901, 1269.44, 305.373, 1265.69, 302.938, 1262.79, 300.597, 1256.61, 299.192, 1250.89, 298.443, 1246.95, 297.155, 1239.65, 293.222, 1235.34, 292.473, 1228.02, 295.225, 1226.89, 299.533, 1222.77, 299.158, 1222.77, 306.65, 1225.96, 312.081, 1218.28, 306.462, 1220.34, 316.576, 1218.09, 318.636, 1214.53, 313.017, 1214.91, 322.382, 1211.54, 321.633, 1210.97, 328.001, 1203.39, 334.376, 1191.09, 343.504, 1180.97, 347.869, 1166.48, 354.417, 1152.59, 358.584, 1141.48, 357.592, 1129.97, 355.806, 1120.65, 360.171, 1108.94, 361.56, 1099.61, 357.79, 1090.68, 349.655, 1082.78, 344.013, 1071.5, 341.661, 1064.89, 341.189, 1059.23, 334.818, 1057.1, 319.244, 1054.27, 311.693, 1050.5, 323.02, 1046.48, 324.672, 1047.19, 308.862, 1041.53, 318.3, 1032.84, 323.515, 1026.48, 324.045, 1019.33, 316.629, 1014.83, 309.477, 1005.29, 306.829, 995.801, 307.513, 966.959, 319.874, 959.093, 332.609, 953.848, 351.338, 930.25, 388.421, 887.174, 426.253, 829.863, 440.862, 777.048, 440.487, 716.741, 427.377, 692.019, 410.896, 688.273, 390.669, 687.15, 366.321, 675.163, 349.84, 666.052, 327.394, 655.67, 313.944, 647.883, 310.404, 641.702, 310.115, 630.657, 312.056, 617.672, 307.571, 604.944, 294.136, 569.418, 273.401, 546.739, 275.921, 500.752, 255.762, 498.232, 246.312, 494.453, 243.478, 490.043, 249.777, 460.134, 246.769, 451.658, 241.737, 439.21, 245.445, 429.939, 240.147, 416.961, 237.764, 405.042, 234.056, 394.447, 226.904, 385.972, 211.542, 386.237, 196.974, 390.21, 181.082, 388.885, 174.461, 385.707, 171.282, 371.934, 172.077, 355.777, 160.688, 344.202, 143.559, 335.707, 141.671, 334.999, 130.816, 332.168, 139.547, 328.156, 143.323, 321.077, 146.862, 312.582, 146.626, 305.975, 142.615, 299.84, 133.884, 285.446, 129.4, 261.377, 128.693, 242.736, 129.4, 227.398, 124.917, 214.891, 113.826, 185.395, 106.04, 161.562, 107.219 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment"]
+occluder = SubResource( 1 )
+
+[node name="GroundSegment2" type="StaticBody2D" parent="Env"]
+position = Vector2( -130, 96 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment2"]
+position = Vector2( 0, -0.314972 )
+polygon = PoolVector2Array( 196.014, 35.7209, 205.924, 39.0244, 207.576, 52.4746, 211.588, 65.4529, 221.97, 65.9249, 234.713, 64.0371, 240.612, 81.4988, 246.747, 84.0944, 254.534, 81.4988, 264.445, 76.7794, 278.603, 82.4426, 282.378, 94.949, 283.322, 104.388, 285.21, 92.5893, 291.581, 88.5778, 294.885, 97.3087, 296.536, 104.624, 297.48, 86.2181, 303.143, 80.7909, 313.054, 78.9031, 322.257, 86.4541, 329.336, 101.792, 334.058, 105.596, 345.447, 104.271, 351.804, 100.563, 359.22, 97.1201, 367.166, 96.0606, 371.404, 99.5038, 375.377, 124.401, 375.112, 134.466, 378.82, 123.871, 384.118, 114.071, 387.296, 113.277, 393.653, 121.488, 402.128, 145.59, 406.366, 149.299, 411.929, 149.299, 420.139, 145.59, 429.939, 143.207, 432.853, 149.563, 430.999, 159.363, 434.177, 162.277, 443.183, 165.985, 449.804, 173.931, 449.804, 179.228, 444.242, 184.791, 429.674, 189.028, 419.08, 189.558, 410.869, 191.942, 406.896, 198.828, 404.512, 206.51, 406.631, 214.985, 412.723, 221.607, 421.728, 224.256, 442.388, 227.699, 456.956, 223.461, 472.583, 227.964, 499.492, 223.319, 505.162, 227.099, 508.312, 234.658, 513.666, 234.658, 518.076, 224.894, 522.486, 245.682, 525.636, 227.729, 529.415, 243.163, 536.975, 221.744, 556.819, 220.484, 579.182, 236.548, 610.68, 232.453, 628.552, 220.126, 633.452, 251.753, 633.898, 276.252, 635.686, 260.66, 638.865, 244.238, 641.513, 236.027, 647.605, 244.503, 649.724, 261.719, 651.578, 241.06, 654.492, 227.022, 660.849, 229.141, 668.265, 243.444, 674.622, 214.573, 684.422, 200.535, 701.758, 202.197, 707.002, 197.702, 726.488, 82.9619, 577.607, 50.0797, 509.929, 25.6063, 448.215, 15.0117, 360.012, 15.4276, 300.784, 7.64059, 271.996, 7.87656, 241.792, 20.3829, 224.33, 17.0793, 207.104, 27.462 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment2"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment2"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment3" type="StaticBody2D" parent="Env"]
+position = Vector2( -131, 95 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment3"]
+position = Vector2( -0.374573, 0.749146 )
+polygon = PoolVector2Array( 724.871, 200.656, 758.024, 136.473, 763.44, 133.211, 743.38, 202.858, 736.096, 206.628, 728.229, 204.006 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment3"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment3"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment4" type="StaticBody2D" parent="Env"]
+position = Vector2( -167, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment4"]
+position = Vector2( 0, 0.374573 )
+polygon = PoolVector2Array( 797.412, 197.683, 831.945, 133.633, 828.373, 152.483, 816.748, 202.063, 809.43, 204.999, 801.189, 202.751 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment4"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment4"]
+occluder = SubResource( 2 )
+
+[node name="RopeBridge" type="Node2D" parent="Env"]
+position = Vector2( 677.783, 421.21 )
+script = ExtResource( 7 )
+segmentScene = ExtResource( 8 )
+segmentLength = 12.0
+
+[node name="Start" type="Node2D" parent="Env/RopeBridge"]
+position = Vector2( -149.502, -9.01016 )
+
+[node name="End" type="Node2D" parent="Env/RopeBridge"]
+position = Vector2( 154.176, -3.00339 )
+
+[node name="GroundSegment6" type="StaticBody2D" parent="Env"]
+position = Vector2( -181, 92 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment6"]
+position = Vector2( 0, 0.374573 )
+polygon = PoolVector2Array( 802.688, 195.009, 831.945, 133.633, 828.373, 152.483, 811.221, 194.216, 806.657, 199.772, 802.887, 200.962 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment6"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment6"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment5" type="StaticBody2D" parent="Env"]
+position = Vector2( -137, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment5"]
+position = Vector2( 0, 0.374573 )
+polygon = PoolVector2Array( 795.024, 197.133, 853.734, 107.044, 895.403, 103.472, 867.841, 184.455, 860.954, 191.871, 807.386, 205.748, 797.272, 202.002 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment5"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment5"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment7" type="StaticBody2D" parent="Env"]
+position = Vector2( -57, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment7"]
+position = Vector2( -0.422241, 0.374573 )
+polygon = PoolVector2Array( 813.816, 184.628, 862.827, 107.441, 1171.1, 84.8657, 1252.75, 132.86, 1255.42, 144.752, 1255.72, 152.482, 1217.6, 247.867, 1213.04, 252.63, 1208.06, 258.033, 1204.26, 263.739, 1200.55, 271.123, 1195.86, 275.805, 1190.67, 278.081, 1185.73, 277.345, 1179.73, 278.186, 1175.95, 277.976, 1173.53, 276.82, 1171.96, 273.771, 1172.17, 268.516, 1170.17, 265.257, 1167.54, 266.308, 1167, 270.123, 1163.66, 270.68, 1162.88, 273.798, 1161.34, 272.72, 1159.65, 274.132, 1157.76, 271.237, 1155.98, 267.784, 1154.24, 263.161, 1136.93, 251.201, 1113.89, 231.601, 1094.82, 205.115, 1070.19, 206.704, 1054.56, 188.428, 1019.07, 178.628, 989.668, 170.417, 932.457, 177.304, 886.043, 191.97, 867.192, 196.732, 824.928, 197.327, 816.792, 192.367 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment7"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment7"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment8" type="StaticBody2D" parent="Env"]
+position = Vector2( -49, 108 )
+physics_material_override = ExtResource( 9 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment8"]
+position = Vector2( -0.365295, 0.458008 )
+polygon = PoolVector2Array( 1213.67, 264.625, 1212.86, 274.68, 1213.26, 280.435, 1215.84, 284.205, 1223.73, 291.081, 1235.34, 294.639, 1244.89, 297.074, 1251.64, 301.944, 1254.26, 309.997, 1257.44, 320.485, 1259.5, 332.097, 1260.25, 342.023, 1258.56, 351.575, 1258, 361.314, 1257.54, 365.286, 1254.58, 357.613, 1253.48, 356.983, 1253.09, 358.794, 1253.87, 368.165, 1252.93, 368.007, 1251.98, 367.535, 1251.28, 369.031, 1251.75, 373.834, 1252.3, 375.803, 1251.67, 377.142, 1250.41, 375.567, 1249.94, 376.748, 1250.02, 378.402, 1257.38, 390.148, 1256.5, 393.715, 1260.62, 393.153, 1256.13, 410.384, 1255.57, 422.557, 1255.94, 432.296, 1252.57, 456.363, 1248.08, 469.578, 1239.82, 481.376, 1221.65, 495.77, 1213.58, 499.822, 1189.53, 504.965, 1179.17, 503.673, 1171.62, 498.954, 1164.07, 496.122, 1160.72, 495.315, 1159.31, 501.683, 1158.84, 495.783, 1156.88, 502.713, 1156.69, 495.034, 1155.29, 501.589, 1154.35, 495.689, 1153.69, 501.121, 1152.66, 494.659, 1152.01, 502.432, 1150.7, 495.877, 1146.76, 496.439, 1142.83, 497.937, 1132.24, 511.613, 1130.19, 518.386, 1127.35, 527.52, 1122.16, 533.662, 1116.17, 539.962, 1102.15, 548.309, 1093.65, 549.569, 1081.05, 549.569, 1071.44, 547.836, 1066.36, 547.867, 1062.78, 548.466, 1056.95, 551.773, 1051.92, 555.238, 1046.4, 559.176, 1039, 561.695, 1030.5, 562.168, 1023.41, 562.64, 1017.27, 561.853, 1008.45, 559.333, 997.739, 556.341, 991.092, 556.691, 989.106, 559.339, 985, 561.591, 979.306, 563.842, 974.936, 565.034, 972.121, 565.816, 969.821, 590.101, 972.4, 592.879, 971.607, 597.046, 974.186, 602.403, 971.805, 606.57, 974.186, 612.325, 970.813, 614.904, 957.965, 769.673, 1539.46, 687.159, 1533.04, 390.49, 1575.56, 118.089, 1319.08, 104.619, 1267.95, 141.822, 1265.64, 147.093, 1267.62, 161.776, 1267.03, 178.246, 1262.27, 206.422, 1223.92, 237.265, 1216.8, 242.05, 1213.23, 247.606, 1213.03, 256.733 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment8"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment8"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment9" type="StaticBody2D" parent="Env"]
+position = Vector2( -57, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment9"]
+position = Vector2( -0.609497, 0.440582 )
+polygon = PoolVector2Array( 974.786, 574.026, 974.203, 571.047, 971.951, 569.061, 969.81, 567.381, 961.346, 565.377, 949.096, 558.25, 940.525, 548.163, 935.334, 538.016, 927.429, 532.471, 915.395, 530.583, 898.983, 534.196, 880.052, 538.205, 866.185, 549.351, 859.037, 561.964, 851.889, 576.68, 845.944, 582.337, 838.148, 581.446, 831.244, 585.9, 830.13, 597.036, 823.003, 601.714, 814.985, 598.595, 808.749, 603.495, 802.735, 613.073, 792.49, 613.073, 781.944, 604.329, 772.18, 608.424, 764.799, 611.055, 758.786, 616.623, 755.536, 626.213, 751.79, 626.587, 749.543, 625.651, 748.044, 628.647, 746.981, 635.555, 742.051, 637.45, 739.616, 640.821, 735.871, 642.507, 728.05, 640.455, 724.709, 650.7, 721.813, 643.573, 720.031, 653.818, 712.682, 659.609, 704.218, 662.505, 691.3, 663.618, 685.064, 660.723, 677.714, 664.732, 670.809, 659.387, 663.459, 666.959, 656.778, 668.741, 648.982, 664.732, 643.192, 668.964, 636.287, 668.518, 627.411, 673.833, 623.964, 674.629, 621.047, 674.894, 617.776, 674.187, 615.92, 672.596, 613.268, 668.883, 611.223, 660.941, 606.858, 658.56, 606.461, 652.607, 603.485, 650.028, 602.377, 648.195, 599.644, 648.931, 602.294, 644.273, 599.318, 641.694, 600.905, 637.328, 597.333, 633.955, 592.77, 636.535, 594.733, 619.944, 592.652, 616.079, 588.603, 626.614, 586.977, 607.87, 584.391, 606.535, 584.308, 601.696, 580.637, 597.859, 580.053, 592.603, 577.55, 590.601, 574.118, 589.111, 571.043, 590.35, 567.57, 590.302, 560.426, 588.317, 549.315, 590.699, 539.989, 591.492, 530.663, 589.508, 487.009, 587.722, 487.46, 676.67, 517.311, 796.078, 964.125, 777.32, 973, 622.044, 972.405, 616.489, 967.048, 613.512, 969.826, 608.552, 967.048, 602.797, 972.008, 596.844, 972.604, 593.471 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment9"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment9"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment10" type="StaticBody2D" parent="Env"]
+position = Vector2( -57, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment10"]
+position = Vector2( -0.609497, 0.440582 )
+polygon = PoolVector2Array( 743.99, 608.923, 740.426, 611.595, 736.912, 611.145, 729.339, 611.368, 718.203, 610.477, 709.517, 611.368, 703.949, 608.695, 703.949, 603.572, 709.517, 604.463, 717.535, 601.568, 724.44, 604.686, 732.68, 605.577, 737.753, 603.577, 742.653, 605.805 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment10"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment10"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment11" type="StaticBody2D" parent="Env"]
+position = Vector2( -57, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment11"]
+position = Vector2( -0.609497, 0.440582 )
+polygon = PoolVector2Array( 693.258, 603.35, 690.585, 608.472, 684.795, 608.695, 674.995, 605.577, 674.549, 599.563, 668.981, 593.995, 660.518, 596, 650.05, 590.654, 645.818, 586.2, 643.591, 579.741, 646.486, 574.618, 655.172, 575.064, 662.745, 583.973, 667.645, 582.413, 672.099, 584.641, 675.663, 585.754, 676.777, 590.209, 680.117, 593.55, 687.022, 593.995, 690.363, 598.45 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment11"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment11"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment12" type="StaticBody2D" parent="Env"]
+position = Vector2( -57, 100 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment12"]
+position = Vector2( -0.609497, 0.329193 )
+polygon = PoolVector2Array( 637.83, 580.747, 636.108, 577.437, 632.93, 576.642, 628.559, 578.364, 625.381, 581.012, 621.408, 580.88, 619.951, 577.701, 614.919, 576.642, 609.621, 576.907, 606.311, 578.099, 604.004, 578.834, 600.727, 578.178, 599.56, 576.702, 596.304, 575.893, 594.679, 577.393, 594.804, 580.268, 597.075, 584.171, 598.292, 587.074, 599.51, 593.349, 600.82, 589.041, 604.589, 587.369, 607.87, 584.23, 609.373, 595.809, 610.964, 588.208, 613.174, 584.319, 614.765, 596.163, 616.002, 589.357, 618.035, 587.766, 618.3, 593.511, 620.068, 596.605, 621.129, 586.97, 623.957, 590.948, 625.106, 586.794, 627.316, 584.672, 629.437, 583.435, 632.532, 582.469, 635.049, 582.337, 636.373, 585.25, 637.3, 588.958 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment12"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment12"]
+occluder = SubResource( 2 )
+
+[node name="GroundSegment13" type="StaticBody2D" parent="Env"]
+position = Vector2( -53, 98 )
+physics_material_override = ExtResource( 6 )
+script = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment13"]
+position = Vector2( -0.609497, 0.329193 )
+polygon = PoolVector2Array( 584.363, 564.733, 581.449, 563.709, 576.961, 564.103, 574.677, 565.52, 575.093, 566.989, 576.921, 566.93, 577.806, 568.877, 580.166, 566.812, 581.7, 569.526, 582.231, 567.284, 585.121, 568.169 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment13"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment13"]
+occluder = SubResource( 2 )
+
+[node name="MainCamera" type="Camera2D" parent="."]
+current = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.0705882, 0.054902, 0.2, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer" groups=[
+"sign_label",
+]]
+visible = false
+modulate = Color( 1, 1, 1, 0.556863 )
+margin_right = 175.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+text = "Turn back"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
