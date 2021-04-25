@@ -91,7 +91,8 @@ disable_collision = false
 rotation = -0.785397
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
-color = Color( 1, 0.819608, 0, 1 )
+color = Color( 0.811765, 0.713726, 0.0588235, 1 )
+energy = 1.5
 mode = 2
 shadow_enabled = true
 

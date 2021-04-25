@@ -65,7 +65,7 @@ func _ready():
 		_ftueLabel.visible = true
 		
 	_signs = get_tree().get_nodes_in_group("sign")
-	_lastSign = _signs[3]
+	_lastSign = _signs[8]
 	
 	var triggers = get_tree().get_nodes_in_group("trigger")
 	for trigger in triggers:
