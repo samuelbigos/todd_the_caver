@@ -9,8 +9,10 @@ onready var _end = get_node("End")
 export var segmentLength = 10.0
 
 var _ropeStatics = []
-var _ropeSegments = []
+var _ropeSupportedSegments = []
 var _ropeSprites = []
+
+var _segments = []
 
 func _ready():	
 	var startPos = _start.position
@@ -48,7 +50,8 @@ func _ready():
 			
 			var supportPin = PinJoint2D.new()
 			supportPin.position = segment.position
-			supportPin.set_softness(1.0)
+			supportPin.set_softness(0.5)
+			supportPin.bias = 0.5
 			add_child(supportPin)
 			supportPin.set_node_a(ropeStatic.get_path())
 			supportPin.set_node_b(segment.get_path())
@@ -58,18 +61,33 @@ func _ready():
 			add_child(ropeSprite)
 			
 			_ropeStatics.append(ropeStatic)
-			_ropeSegments.append(segment)
+			_ropeSupportedSegments.append(segment)
 			_ropeSprites.append(ropeSprite)
+			
+		_segments.append(segment)
 		
 	var endPin = PinJoint2D.new()
+	endPin.set_softness(0.5)
+	endPin.bias = 0.5
 	add_child(endPin)
 	endPin.set_node_a(endStatic.get_path())
 	endPin.set_node_b(prev.get_path())
 	
+func collapse(pos):
+	var closest = null
+	var dist = 99999.9
+	for segment in _segments:
+		var length = (segment.global_position - pos).length()
+		if (length < dist):
+			dist = length
+			closest = segment
+
+	closest.break_joint()
+	
 func _process(delta):
 	for i in range(0, _ropeStatics.size()):
 		var sprite = _ropeSprites[i]
-		sprite.position = (_ropeSegments[i].position + _ropeStatics[i].position) * 0.5
-		sprite.scale = Vector2(1.0, (_ropeSegments[i].position - _ropeStatics[i].position).length())
-		var rotVec = (_ropeSegments[i].position - _ropeStatics[i].position).normalized()
+		sprite.position = (_ropeSupportedSegments[i].position + _ropeStatics[i].position) * 0.5
+		sprite.scale = Vector2(1.0, (_ropeSupportedSegments[i].position - _ropeStatics[i].position).length())
+		var rotVec = (_ropeSupportedSegments[i].position - _ropeStatics[i].position).normalized()
 		sprite.rotation = atan2(rotVec.x, rotVec.y)

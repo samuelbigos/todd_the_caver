@@ -15,50 +15,52 @@ radius = 2.31838
 height = 8.7621
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 1.00503
+radius = 1.0908
 height = 5.43092
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 0.665487
+radius = 0.792665
 height = 6.38399
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 1.45371
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 0.910068
+radius = 1.06483
 height = 5.599
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 0.7341
+radius = 0.795671
 height = 6.31237
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 1.36138
 
 [sub_resource type="CapsuleShape2D" id=9]
-radius = 1.10721
+radius = 1.24882
 height = 6.29995
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 0.860382
+radius = 1.01589
 height = 6.88226
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 1.39448
 
 [sub_resource type="CapsuleShape2D" id=12]
-radius = 1.14542
+radius = 1.30647
 height = 6.07974
 
 [sub_resource type="CapsuleShape2D" id=13]
-radius = 0.881576
+radius = 1.07343
 height = 7.03495
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 1.38406
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=[
+"player",
+]]
 script = ExtResource( 3 )
 
 [node name="Head" type="RigidBody2D" parent="." groups=[

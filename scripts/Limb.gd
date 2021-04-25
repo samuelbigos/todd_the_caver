@@ -16,6 +16,7 @@ var _grabDelta : Vector2
 var _resetForces := false
 var _touchingWalls = 0
 
+var _player = null
 var _grabber : RigidBody2D = null
 var _lower : RigidBody2D = null
 var _upper : RigidBody2D = null
@@ -35,8 +36,7 @@ func _ready():
 					
 	_grabber = _elements[grabberIndex]
 	_lower = _elements[lowerIndex]
-	_upper = _elements[upperIndex]
-	_torso = get_tree().get_nodes_in_group("torso")[0]
+	_upper = _elements[upperIndex]	
 	
 	_grabber.contact_monitor = true
 	_grabber.contacts_reported = 10
@@ -55,7 +55,7 @@ func on_deselected():
 func _physics_process(delta):
 	if _selected:
 		var mousePos = get_global_mouse_position()
-		var toMouse = (mousePos - _grabber.position).normalized()
+		var toMouse = (mousePos - _grabber.global_position).normalized()
 		_grabber.applied_force = toMouse * mouseForce
 		_lower.applied_force = toMouse * mouseForce * 0.5
 		_upper.applied_force = _grabDelta * 0.5
@@ -68,12 +68,18 @@ func _physics_process(delta):
 		_resetForces = false
 	
 func _process(delta):
+	if _torso == null:
+		_torso = get_tree().get_nodes_in_group("torso")[0]
+	if _player == null:
+		_player = get_tree().get_nodes_in_group("player")[0]
+		
 	if _selected:
 		if Input.is_action_pressed("grab") and _can_grab() and not _grabbing:
 			_grabBeginPos = get_viewport().get_mouse_position()
 			_grabLastPos = _grabBeginPos
 			_grabber.mode = RigidBody.MODE_STATIC
 			_grabbing = true
+			_player._didGrab = true
 			
 		if _grabbing:
 			var mousePos = get_global_mouse_position()
@@ -82,23 +88,23 @@ func _process(delta):
 			_grabDelta = grabStrength * grabPosDelta
 			#_grabDelta = -(mousePos - _grabber.position) * grabStrength * 0.1
 		
-		if Input.is_action_just_released("grab") and _grabbing:
+		if (Input.is_action_just_released("grab") or _player._grabbingDisabled) and _grabbing:
 			_grabDelta = Vector2(0.0, 0.0)
 			_grabber.mode = RigidBody.MODE_RIGID
 			_grabbing = false
 		
 	_set_colour(defaultCol)
 	if _selected:
-		_set_colour(Color.red)
+		_set_colour(Color("d93e3e"))
 	if _selected and _can_grab():
-		_sprites[grabberIndex].modulate = Color.blue
+		_sprites[grabberIndex].modulate = Color("4584ff")
 			
 func _set_colour(var color):
 	for sprite in _sprites:
 		sprite.modulate = color
 
 func _can_grab():
-	return _touchingWalls > 0
+	return _touchingWalls > 0 and _player._grabbingDisabled == false
 	
 func grabber_pos():
 	return _grabber.position
