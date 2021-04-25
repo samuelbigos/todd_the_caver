@@ -15,6 +15,8 @@ var _grabLastPos : Vector2
 var _grabDelta : Vector2
 var _resetForces := false
 var _touchingWalls = 0
+var _overridden = false
+var _tearFactor = 1.0
 
 var _player = null
 var _grabber : RigidBody2D = null
@@ -63,9 +65,11 @@ func _physics_process(delta):
 	elif _resetForces:
 		_grabber.applied_force = Vector2(0.0, 0.0)
 		_lower.applied_force = Vector2(0.0, 0.0)
-		_upper.applied_force = Vector2(0.0, 0.0)
-		_torso.applied_force = Vector2(0.0, 0.0)
 		_resetForces = false
+		
+	if _overridden:
+		var toTorso = (_torso.global_position - _grabber.global_position).normalized()
+		_grabber.applied_force = -toTorso * mouseForce * _tearFactor
 	
 func _process(delta):
 	if _torso == null:
@@ -73,7 +77,7 @@ func _process(delta):
 	if _player == null:
 		_player = get_tree().get_nodes_in_group("player")[0]
 		
-	if _selected:
+	if _selected and not _overridden:
 		if Input.is_action_pressed("grab") and _can_grab() and not _grabbing:
 			_grabBeginPos = get_viewport().get_mouse_position()
 			_grabLastPos = _grabBeginPos
@@ -98,6 +102,14 @@ func _process(delta):
 		_set_colour(Color("d93e3e"))
 	if _selected and _can_grab():
 		_sprites[grabberIndex].modulate = Color("4584ff")
+		
+	if _overridden:
+		_tearFactor += delta * 5.0
+		
+func overrideForce():
+	if not _overridden:
+		_overridden = true
+		on_deselected()
 			
 func _set_colour(var color):
 	for sprite in _sprites:

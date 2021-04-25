@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/circle.png" type="Texture" id=1]
 [ext_resource path="res://assets/1px.png" type="Texture" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://scripts/Limb.gd" type="Script" id=4]
 [ext_resource path="res://assets/light.png" type="Texture" id=5]
 [ext_resource path="res://assets/light-cone.png" type="Texture" id=6]
+[ext_resource path="res://assets/sfx/hits/5.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sfx/hits/4.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sfx/checkpoint.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/sfx/bridge_collapse.wav" type="AudioStream" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1.68639
@@ -14,45 +18,57 @@ radius = 1.68639
 radius = 2.31838
 height = 8.7621
 
+[sub_resource type="ParticlesMaterial" id=15]
+lifetime_randomness = 0.5
+flag_disable_z = true
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_random = 1.0
+color = Color( 1, 0, 0, 1 )
+
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 1.0908
+radius = 1.22059
 height = 5.43092
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 0.792665
+radius = 0.936801
 height = 6.38399
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 1.45371
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 1.06483
+radius = 1.20229
 height = 5.599
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 0.795671
+radius = 0.963532
 height = 6.31237
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 1.36138
 
 [sub_resource type="CapsuleShape2D" id=9]
-radius = 1.24882
+radius = 1.39709
 height = 6.29995
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 1.01589
+radius = 1.2656
 height = 6.88226
 
 [sub_resource type="CircleShape2D" id=11]
 radius = 1.39448
 
 [sub_resource type="CapsuleShape2D" id=12]
-radius = 1.30647
+radius = 1.3811
 height = 6.07974
 
 [sub_resource type="CapsuleShape2D" id=13]
-radius = 1.07343
+radius = 1.22677
 height = 7.03495
 
 [sub_resource type="CircleShape2D" id=14]
@@ -62,6 +78,7 @@ radius = 1.38406
 "player",
 ]]
 script = ExtResource( 3 )
+_hitSFX = [ ExtResource( 11 ), ExtResource( 10 ) ]
 
 [node name="Head" type="RigidBody2D" parent="." groups=[
 "body",
@@ -91,7 +108,7 @@ disable_collision = false
 rotation = -0.785397
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
-color = Color( 0.811765, 0.713726, 0.0588235, 1 )
+color = Color( 0.847059, 0.792157, 0.411765, 1 )
 energy = 1.5
 mode = 2
 shadow_enabled = true
@@ -150,6 +167,38 @@ shadow_enabled = true
 shadow_gradient_length = 10.0
 shadow_filter = 1
 shadow_filter_smooth = 10.0
+
+[node name="RightArmP" type="Particles2D" parent="Torso"]
+position = Vector2( 2, -5 )
+rotation = -0.729548
+emitting = false
+amount = 500
+lifetime = 2.0
+process_material = SubResource( 15 )
+
+[node name="LeftArmP" type="Particles2D" parent="Torso"]
+position = Vector2( -2, -5 )
+rotation = -2.45044
+emitting = false
+amount = 500
+lifetime = 2.0
+process_material = SubResource( 15 )
+
+[node name="RightLegP" type="Particles2D" parent="Torso"]
+position = Vector2( 2, 6 )
+rotation = 1.16413
+emitting = false
+amount = 500
+lifetime = 2.0
+process_material = SubResource( 15 )
+
+[node name="LeftLegP" type="Particles2D" parent="Torso"]
+position = Vector2( -2, 6 )
+rotation = 2.02458
+emitting = false
+amount = 500
+lifetime = 2.0
+process_material = SubResource( 15 )
 
 [node name="ArmRight" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -390,3 +439,32 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LegRight/FootRight"]
 shape = SubResource( 14 )
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+pitch_scale = 0.5
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="CheckpointPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -10.0
+
+[node name="BridgeCollapsePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -10.0
+
+[connection signal="body_entered" from="Head" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmRight/ArmRightUpper" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmRight/ArmRightLower" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmRight/HandRight" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmLeft/ArmLeftUpper" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmLeft/ArmLeftLower" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ArmLeft/HandLeft" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegLeft/LegLeftUpper" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegLeft/LegLeftLower" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegLeft/FootLeft" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegRight/LegRightUpper" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegRight/LegRightLower" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="LegRight/FootRight" to="." method="_on_body_entered"]

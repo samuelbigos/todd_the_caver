@@ -4,6 +4,8 @@ var _torso
 var _label
 var _visible = false
 
+export var cutMusic = false
+export var music : AudioStream = null
 export var text = ""
 
 func _ready():

@@ -11,6 +11,12 @@ var _ftueLabelPos
 var _didGrab
 var _FTUETimer = 0.0
 var _grabbingDisabled = false
+var _inCore = false
+var _inCoreTimer = 0.0
+var _tearTriggered = false
+var _tearTimer = 0.0
+var _torn = false
+var _lastTorsoPos
 
 enum FTUEState {
 	E,
@@ -24,6 +30,8 @@ enum FTUEState {
 } 
 var _ftueState = FTUEState.E
 
+export var _hitSFX = []
+
 onready var _handLeft = get_node("ArmLeft/HandLeft")
 onready var _torso = get_node("Torso")
 onready var _head = get_node("Head")
@@ -33,7 +41,22 @@ onready var _armRight = get_node("ArmRight")
 onready var _legLeft = get_node("LegLeft")
 onready var _legRight = get_node("LegRight")
 
+onready var _armLeftPin = get_node("Torso/LeftArmPin")
+onready var _armRightPin = get_node("Torso/RightArmPin")
+onready var _legLeftPin = get_node("Torso/LeftLegPin")
+onready var _legRightPin = get_node("Torso/RightLegPin")
+
+onready var _armLeftP = get_node("Torso/LeftArmP")
+onready var _armRightP = get_node("Torso/RightArmP")
+onready var _legLeftP = get_node("Torso/LeftLegP")
+onready var _legRightP = get_node("Torso/RightLegP")
+
 onready var _signLabel = get_node("../CanvasLayer/Label")
+
+onready var _hitPlayer = get_node("HitPlayer")
+onready var _checkpointPlayer = get_node("CheckpointPlayer")
+onready var _bridgeCollapsePlayer = get_node("BridgeCollapsePlayer")
+onready var _musicPlayer = get_node("MusicPlayer")
 
 func _ready():
 	_game = get_tree().get_nodes_in_group("game")[0]
@@ -65,11 +88,12 @@ func _ready():
 		_ftueLabel.visible = true
 		
 	_signs = get_tree().get_nodes_in_group("sign")
-	_lastSign = _signs[8]
+	#_lastSign = _signs[1]
 	
 	var triggers = get_tree().get_nodes_in_group("trigger")
 	for trigger in triggers:
 		trigger.connect("on_body_entered", self, "_on_trigger_entered")
+		trigger.connect("on_body_exited", self, "_on_trigger_exited")
 		
 func _on_trigger_entered(body, trigger):
 	if body == _torso:
@@ -84,10 +108,21 @@ func _on_trigger_entered(body, trigger):
 				var boneSpawner = get_tree().get_nodes_in_group("bone_spawner")[0]
 				boneSpawner._throwing = false
 				_grabbingDisabled = true
+				_bridgeCollapsePlayer.play()
 
 			"enable_climb":
 				_grabbingDisabled = false
-	
+				
+			"core":
+				_inCore = true
+				
+func _on_trigger_exited(body, trigger):
+	if body == _torso:
+		match trigger.triggerName:
+			"core":
+				_inCore = false
+				_inCoreTimer = 0.0
+				
 func disableFTUE():
 	_ftueState = FTUEState.None
 	_torso.mode = RigidBody2D.MODE_RIGID
@@ -137,6 +172,38 @@ func _process(delta):
 			
 	_processFTUE()
 	_FTUETimer += delta
+	
+	if _inCore:
+		_inCoreTimer += delta
+		if _inCoreTimer > 5.0 and not _tearTriggered:
+			_beginTearApart()
+	
+	if not _torn:
+		_lastTorsoPos = _torso.position
+		
+	if _tearTriggered and not _torn:
+		_tearTimer += delta
+		if _tearTimer > 4.0:
+			_bridgeCollapsePlayer.play()
+			_torn = true
+			_armLeftPin.queue_free()
+			_armRightPin.queue_free()
+			_legLeftPin.queue_free()
+			_legRightPin.queue_free()
+			_armLeftP.emitting = true
+			_armRightP.emitting = true
+			_legLeftP.emitting = true
+			_legRightP.emitting = true
+			_game.end()
+			
+func _beginTearApart():
+	_armLeft.overrideForce()
+	_armRight.overrideForce()
+	_legLeft.overrideForce()
+	_legRight.overrideForce()
+	_tearTriggered = true
+	_torn = false
+	_tearTimer = 0.0
 			
 func _processFTUE():
 	match _ftueState:
@@ -205,10 +272,27 @@ func get_average_grabber_pos():
 	return pos / 4.0	
 
 func get_camera_pos():
+	if _torn:
+		return _lastTorsoPos
 	if _selectedLimb != null:
 		return _selectedLimb.grabber_pos()
 	else:
 		return get_average_grabber_pos()
 
 func set_checkpoint(theSign):
-	_lastSign = theSign
+	if _lastSign != theSign or not _musicPlayer.playing:
+		if theSign.music != null:
+			_musicPlayer.stream = theSign.music
+			_musicPlayer.play()
+			
+	if theSign.cutMusic:
+		_musicPlayer.stop()
+		
+	if _lastSign != theSign:
+		_checkpointPlayer.play()
+		_lastSign = theSign	
+
+func _on_body_entered(body):
+	if not body.is_in_group("body"):
+		_hitPlayer.stream = _hitSFX[randi() % _hitSFX.size()]
+		_hitPlayer.play()
