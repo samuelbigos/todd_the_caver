@@ -326,6 +326,111 @@ texture_scale = 0.1
 color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
 mode = 2
 
+[node name="GlowShrooms2" type="Node2D" parent="Env"]
+position = Vector2( -56, -144 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1056.17, 611.721 )
+texture = ExtResource( 11 )
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+energy = 0.75
+
+[node name="Shroom" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1058.93, 594.401 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom2" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1048.02, 597.995 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom2"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom3" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1044.8, 598.245 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom3"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom3"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom4" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1068.74, 596.026 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom4"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom4"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom5" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1041.74, 598.558 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom5"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom5"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
+[node name="Shroom7" type="Node2D" parent="Env/GlowShrooms2"]
+position = Vector2( 1072.02, 596.37 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Env/GlowShrooms2/Shroom7"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Env/GlowShrooms2/Shroom7"]
+texture = ExtResource( 11 )
+texture_scale = 0.1
+color = Color( 0.305882, 0.996078, 0.380392, 0.839216 )
+mode = 2
+
 [node name="Signs" type="Node2D" parent="Env"]
 
 [node name="A" type="Area2D" parent="Env/Signs" groups=[
