@@ -52,7 +52,8 @@ func on_deselected():
 	_selected = false
 	_grabber.mode = RigidBody.MODE_RIGID
 	_resetForces = true
-	_grabbing = false	
+	_grabbing = false
+	_grabDelta = Vector2(0.0, 0.0)
 
 func _physics_process(delta):
 	if _selected:
@@ -65,6 +66,8 @@ func _physics_process(delta):
 	elif _resetForces:
 		_grabber.applied_force = Vector2(0.0, 0.0)
 		_lower.applied_force = Vector2(0.0, 0.0)
+		_upper.applied_force = Vector2(0.0, 0.0)
+		_torso.applied_force = Vector2(0.0, 0.0)
 		_resetForces = false
 		
 	if _overridden:
