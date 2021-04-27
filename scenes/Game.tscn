@@ -24,43 +24,43 @@
 [ext_resource path="res://assets/music/2.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/music/1.wav" type="AudioStream" id=23]
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1398.42, 3722.48 )
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=2]
 radius = 2912.29
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 168.667, 51.9731 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 121.215, 22.2572 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 122.051, 96.4173 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 21.8234, 25.6891 )
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 1.84986
 height = 5.59076
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=8]
 radius = 3.96457
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 29.2364, 40.4873 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 124.511, 38.3233 )
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=11]
 radius = 71.4815
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=12]
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=13]
 
 [node name="Game" type="Node2D" groups=[
 "game",
@@ -109,7 +109,7 @@ space_override = 3
 gravity = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Abyss"]
-shape = SubResource( 12 )
+shape = SubResource( 1 )
 
 [node name="Core" type="Area2D" parent="Env"]
 position = Vector2( 1550.21, 14313.4 )
@@ -118,7 +118,7 @@ gravity_point = true
 gravity = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Core"]
-shape = SubResource( 13 )
+shape = SubResource( 2 )
 
 [node name="Moon2" type="Light2D" parent="Env"]
 position = Vector2( 537.731, 961.292 )
@@ -156,7 +156,7 @@ linear_damp = 3.0
 angular_damp = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Water/A/Area2D"]
-shape = SubResource( 9 )
+shape = SubResource( 3 )
 
 [node name="B" type="Node2D" parent="Env/Water"]
 position = Vector2( -112, 64 )
@@ -181,7 +181,7 @@ linear_damp = 3.0
 angular_damp = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Water/B/Area2D"]
-shape = SubResource( 10 )
+shape = SubResource( 4 )
 
 [node name="C" type="Node2D" parent="Env/Water"]
 position = Vector2( -144, 320 )
@@ -205,7 +205,7 @@ linear_damp = 3.0
 angular_damp = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Water/C/Area2D"]
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="Env/Water/C"]
 position = Vector2( -55, -49 )
@@ -445,7 +445,7 @@ text = "Welcome to the Sanisville cave system! Session are currently suspended d
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/A"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="B" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -458,7 +458,7 @@ text = "Intermediate route begins here. Have you had your equipment checked by o
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/B"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="C" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -472,7 +472,7 @@ text = "Be careful up ahead, there are... *the sign has been damaged and this se
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/C"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="D" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -486,7 +486,7 @@ text = "This route is for experienced cavers ONLY. Don't say we didn't WARN you.
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/D"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="E" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -500,7 +500,7 @@ text = "... You didn't think you'd get out of here alive... did you? ha. Ha. HAH
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/E"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="F" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -514,7 +514,7 @@ text = "A beam of moonlight? A beacon of hope in the darkness? Or is it merely p
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/F"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="G" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -529,7 +529,7 @@ text = "Why me? What's happening? How do I get out? These are questions you migh
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/G"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="H" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -543,7 +543,7 @@ text = "\"Help... meeeeeeeee\" Wait... how did you?"
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/H"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="I" type="Area2D" parent="Env/Signs" groups=[
 "sign",
@@ -557,7 +557,7 @@ text = "Don't mind me I'm just a dev sign... oooooo eeeee aaaaaa oooooo *scary n
 texture = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Signs/I"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="Bones" type="Node2D" parent="Env"]
 
@@ -575,7 +575,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone2"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone3" type="RigidBody2D" parent="Env/Bones"]
 position = Vector2( 576, 712 )
@@ -587,7 +587,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone3"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone4" type="RigidBody2D" parent="Env/Bones"]
 position = Vector2( 544, 712 )
@@ -599,7 +599,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone4"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone5" type="RigidBody2D" parent="Env/Bones"]
 position = Vector2( 552, 712 )
@@ -611,7 +611,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bone5"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bonepile" type="Node2D" parent="Env/Bones"]
 position = Vector2( -584, 120 )
@@ -625,7 +625,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull2"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone6" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 560, 712 )
@@ -637,7 +637,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone6"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone7" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 568, 712 )
@@ -649,7 +649,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone7"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone8" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 576, 712 )
@@ -661,7 +661,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone8"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone9" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 544, 712 )
@@ -673,7 +673,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone9"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone10" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 552, 712 )
@@ -685,7 +685,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone10"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull3" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 552, 684 )
@@ -696,7 +696,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull3"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone11" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 544, 692 )
@@ -708,7 +708,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone11"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone12" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 552, 692 )
@@ -720,7 +720,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone12"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone13" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 560, 692 )
@@ -732,7 +732,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone13"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone14" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 528, 692 )
@@ -744,7 +744,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone14"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone15" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 536, 692 )
@@ -756,7 +756,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone15"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull4" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 592, 668 )
@@ -767,7 +767,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull4"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone16" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 584, 676 )
@@ -779,7 +779,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone16"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone17" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 592, 676 )
@@ -791,7 +791,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone17"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone18" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 600, 676 )
@@ -803,7 +803,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone18"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone19" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 568, 676 )
@@ -815,7 +815,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone19"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone20" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 576, 676 )
@@ -827,7 +827,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone20"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull5" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 568, 652 )
@@ -838,7 +838,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull5"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone21" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 560, 660 )
@@ -850,7 +850,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone21"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone22" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 568, 660 )
@@ -862,7 +862,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone22"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone23" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 576, 660 )
@@ -874,7 +874,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone23"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone24" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 544, 660 )
@@ -886,7 +886,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone24"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone25" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 552, 660 )
@@ -898,7 +898,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone25"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull6" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 544, 636 )
@@ -909,7 +909,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull6"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone26" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 536, 644 )
@@ -921,7 +921,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone26"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone27" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 544, 644 )
@@ -933,7 +933,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone27"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone28" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 552, 644 )
@@ -945,7 +945,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone28"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone29" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 520, 644 )
@@ -957,7 +957,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone29"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone30" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 528, 644 )
@@ -969,7 +969,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone30"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull7" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 584, 628 )
@@ -980,7 +980,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Skull7"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone31" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 576, 636 )
@@ -992,7 +992,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone31"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone32" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 584, 636 )
@@ -1004,7 +1004,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone32"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone33" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 592, 636 )
@@ -1016,7 +1016,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone33"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone34" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 560, 636 )
@@ -1028,7 +1028,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone34"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone35" type="RigidBody2D" parent="Env/Bones/Bonepile"]
 position = Vector2( 568, 636 )
@@ -1040,7 +1040,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile/Bone35"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bonepile2" type="Node2D" parent="Env/Bones"]
 position = Vector2( -576, 128 )
@@ -1054,7 +1054,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull2"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone6" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 560, 712 )
@@ -1066,7 +1066,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone6"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone7" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 568, 712 )
@@ -1078,7 +1078,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone7"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone8" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 576, 712 )
@@ -1090,7 +1090,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone8"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone9" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 544, 712 )
@@ -1102,7 +1102,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone9"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone10" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 552, 712 )
@@ -1114,7 +1114,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone10"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull3" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 552, 684 )
@@ -1125,7 +1125,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull3"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone11" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 544, 692 )
@@ -1137,7 +1137,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone11"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone12" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 552, 692 )
@@ -1149,7 +1149,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone12"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone13" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 560, 692 )
@@ -1161,7 +1161,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone13"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone14" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 528, 692 )
@@ -1173,7 +1173,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone14"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone15" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 536, 692 )
@@ -1185,7 +1185,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone15"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull4" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 592, 668 )
@@ -1196,7 +1196,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull4"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone16" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 584, 676 )
@@ -1208,7 +1208,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone16"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone17" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 592, 676 )
@@ -1220,7 +1220,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone17"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone18" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 600, 676 )
@@ -1232,7 +1232,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone18"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone19" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 568, 676 )
@@ -1244,7 +1244,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone19"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone20" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 576, 676 )
@@ -1256,7 +1256,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone20"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull5" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 568, 652 )
@@ -1267,7 +1267,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull5"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone21" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 560, 660 )
@@ -1279,7 +1279,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone21"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone22" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 568, 660 )
@@ -1291,7 +1291,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone22"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone23" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 576, 660 )
@@ -1303,7 +1303,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone23"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone24" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 544, 660 )
@@ -1315,7 +1315,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone24"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone25" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 552, 660 )
@@ -1327,7 +1327,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone25"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull6" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 544, 636 )
@@ -1338,7 +1338,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull6"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone26" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 536, 644 )
@@ -1350,7 +1350,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone26"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone27" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 544, 644 )
@@ -1362,7 +1362,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone27"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone28" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 552, 644 )
@@ -1374,7 +1374,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone28"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone29" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 520, 644 )
@@ -1386,7 +1386,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone29"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone30" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 528, 644 )
@@ -1398,7 +1398,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone30"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Skull7" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 584, 628 )
@@ -1409,7 +1409,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Skull7"]
-shape = SubResource( 3 )
+shape = SubResource( 8 )
 
 [node name="Bone31" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 576, 636 )
@@ -1421,7 +1421,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone31"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone32" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 584, 636 )
@@ -1433,7 +1433,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone32"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone33" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 592, 636 )
@@ -1445,7 +1445,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone33"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone34" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 560, 636 )
@@ -1457,7 +1457,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone34"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Bone35" type="RigidBody2D" parent="Env/Bones/Bonepile2"]
 position = Vector2( 568, 636 )
@@ -1469,7 +1469,7 @@ texture = ExtResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Bones/Bonepile2/Bone35"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Triggers" type="Node2D" parent="Env"]
 
@@ -1479,7 +1479,7 @@ script = ExtResource( 20 )
 triggerName = "bone_thrower"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Triggers/BoneThrower"]
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="BridgeCollapse" type="Area2D" parent="Env/Triggers"]
 position = Vector2( -48, 664 )
@@ -1487,7 +1487,7 @@ script = ExtResource( 20 )
 triggerName = "bridge_collapse"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Triggers/BridgeCollapse"]
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="EnableClimbing" type="Area2D" parent="Env/Triggers"]
 position = Vector2( 0, 816 )
@@ -1495,7 +1495,7 @@ script = ExtResource( 20 )
 triggerName = "enable_climb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Triggers/EnableClimbing"]
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="Core" type="Area2D" parent="Env/Triggers" groups=[
 "trigger",
@@ -1505,7 +1505,7 @@ script = ExtResource( 20 )
 triggerName = "core"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Triggers/Core"]
-shape = SubResource( 14 )
+shape = SubResource( 11 )
 
 [node name="GroundSegment" type="StaticBody2D" parent="Env"]
 position = Vector2( -130, 96 )
@@ -1514,12 +1514,12 @@ script = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment"]
 position = Vector2( 0, -0.222717 )
-polygon = PoolVector2Array( 135.134, 110.523, 117.766, 107.39, 108.635, 101.154, 104.848, 86.0089, 106.407, 78.659, 111.53, 66.6318, 112.644, 59.0592, 106.853, 54.6047, 92.153, 53.0456, 86.5849, 55.0501, 87.253, 66.1864, 87.9212, 73.3136, 83.6894, 87.3452, 79.4577, 96.0315, 72.7759, 102.268, 60.5403, 106.087, 36.4718, 103.604, 29.1114, 101.597, 25.1129, 96.2542, 18.6538, 82.2225, 8.63124, 72.8681, 0.167679, 60.3955, 0.167679, 52.8229, 0.835854, 46.5866, 4.40724, 41.8561, 11.0812, 43.6912, 15.9811, 42.5776, 19.5447, 39.4594, 21.1038, 35.4504, 18.2084, 30.105, 11.5266, 25.6505, 6.53096, 20.8549, -1.02005, 8.34852, -6.29132, 6.27344, -12.7503, 6.71889, -18.7177, 9.52837, -23.4411, 12.9552, -33.4637, 30.9959, -34.5276, 37.3727, -37.9182, 52.8229, -45.7136, 65.9636, -53.9544, 72.4227, -58.6316, 81.7771, -56.6271, 95.3633, -51.2817, 108.95, -36.6513, 127.277, -19.2727, 180.288, 31.7467, 281.905, 163.723, 298.284, 199.631, 379.864, 339.482, 413.567, 624.16, 471.384, 687.013, 491.781, 699.911, 505.472, 708.244, 508.846, 715.586, 523.529, 720.745, 515.394, 721.142, 525.117, 725.507, 521.545, 730.667, 522.14, 732.849, 528.49, 741.183, 516.981, 747.136, 517.378, 750.311, 522.14, 752.493, 561.627, 755.47, 509.639, 760.827, 508.647, 763.605, 512.417, 767.772, 559.047, 771.741, 523.728, 778.289, 511.227, 780.471, 516.386, 785.63, 514.203, 789.996, 522.14, 792.377, 539.205, 794.361, 517.576, 798.329, 515.195, 801.703, 519.164, 806.266, 530.077, 808.846, 524.72, 814.227, 523.767, 818.722, 530.697, 820.595, 573.398, 824.341, 517.212, 828.166, 515.569, 831.944, 542.945, 835.747, 505.385, 839.283, 499.021, 840.52, 534.2, 842.111, 551.347, 845.116, 538.796, 849.005, 548.342, 850.419, 533.67, 848.121, 521.295, 848.652, 503.618, 852.894, 509.628, 856.253, 514.931, 859.612, 524.477, 861.026, 554.706, 864.562, 503.971, 867.92, 500.436, 872.34, 501.319, 875.345, 504.678, 878.704, 522.002, 879.588, 509.098, 882.593, 527.836, 885.068, 507.86, 887.543, 521.295, 888.957, 503.794, 892.846, 503.618, 895.144, 509.098, 897.796, 529.781, 899.033, 502.38, 901.331, 499.375, 904.336, 501.673, 906.811, 522.709, 909.809, 497.952, 918.943, 512.756, 923.983, 503.936, 932.374, 512.693, 944.388, 502.348, 997.475, 500.599, 1005.8, 499.41, 1018.29, 497.626, 1022.3, 500.896, 1027.35, 504.315, 1030.48, 507.585, 1031.52, 523.788, 1032.41, 519.775, 1035.53, 509.369, 1037.61, 510.41, 1038.35, 515.018, 1038.8, 531.815, 1040.44, 517.099, 1041.71, 510.266, 1042.98, 506.272, 1042.24, 515.417, 1042.34, 519.306, 1042.57, 522.309, 1043.57, 532.487, 1051.08, 536.825, 1048.58, 539.662, 1056.34, 542.221, 1053.92, 545.502, 1057.52, 549.667, 1064.85, 548.377, 1071.96, 548.771, 1079.81, 549.437, 1086.04, 550.232, 1094.25, 550.232, 1101.14, 549.569, 1108.82, 548.907, 1116.41, 545.564, 1119.56, 539.895, 1120.82, 531.863, 1124.29, 523.201, 1127.12, 518.003, 1133.89, 511.704, 1138.78, 508.712, 1146.65, 508.554, 1154.21, 509.971, 1158.93, 510.129, 1163.03, 508.869, 1167.6, 501.624, 1171.53, 495.325, 1179.09, 489.183, 1193.74, 481.781, 1221.65, 482.327, 1246.03, 480.543, 1255.69, 484.26, 1261.37, 487.758, 1264.72, 492.213, 1270.51, 494.885, 1275.85, 496.89, 1281.05, 496.261, 1295.9, 490.588, 1304.91, 480.41, 1314.09, 465.726, 1316.53, 447.029, 1316.77, 435.938, 1314.41, 422.488, 1310.16, 405.734, 1308.51, 388.273, 1304.97, 376.946, 1300.48, 365.148, 1297.33, 352.9, 1295.83, 344.659, 1293.02, 338.291, 1289.28, 333.609, 1284.03, 328.365, 1278.24, 315.486, 1275.99, 310.898, 1272.81, 307.901, 1269.44, 305.373, 1265.69, 302.938, 1262.79, 300.597, 1256.61, 299.192, 1250.89, 298.443, 1246.95, 297.155, 1239.65, 293.222, 1235.41, 292.999, 1228.46, 295.479, 1226.89, 299.533, 1222.77, 299.158, 1222.77, 306.65, 1225.96, 312.081, 1218.28, 306.462, 1220.34, 316.576, 1218.09, 318.636, 1214.53, 313.017, 1214.91, 322.382, 1211.54, 321.633, 1210.97, 328.001, 1203.39, 334.376, 1191.09, 343.504, 1180.97, 347.869, 1166.48, 354.417, 1152.59, 358.584, 1141.48, 357.592, 1129.97, 355.806, 1120.65, 360.171, 1108.94, 361.56, 1099.61, 357.79, 1090.68, 349.655, 1082.78, 344.013, 1071.5, 341.661, 1064.89, 341.189, 1059.23, 334.818, 1057.1, 319.244, 1054.27, 311.693, 1050.5, 323.02, 1046.48, 324.672, 1047.19, 308.862, 1041.53, 318.3, 1032.84, 323.515, 1026.48, 324.045, 1019.33, 316.629, 1014.83, 309.477, 1005.29, 306.829, 995.801, 307.513, 966.959, 319.874, 959.093, 332.609, 953.848, 351.338, 930.25, 388.421, 887.174, 426.253, 829.863, 440.862, 777.048, 440.487, 716.741, 427.377, 692.019, 410.896, 688.273, 390.669, 687.15, 366.321, 675.163, 349.84, 666.052, 327.394, 655.67, 313.944, 647.883, 310.404, 641.702, 310.115, 630.657, 312.056, 617.672, 307.571, 604.944, 294.136, 569.418, 273.401, 546.739, 275.921, 500.752, 255.762, 498.232, 246.312, 494.453, 243.478, 490.043, 249.777, 460.134, 246.769, 451.85, 242.252, 439.666, 244.503, 428.939, 241.59, 416.961, 237.764, 405.042, 234.056, 394.447, 226.904, 385.972, 211.542, 386.237, 196.974, 390.21, 181.082, 388.885, 174.461, 385.707, 171.282, 371.934, 172.077, 355.777, 160.688, 344.202, 143.559, 335.707, 141.671, 334.999, 130.816, 332.168, 139.547, 328.156, 143.323, 321.077, 146.862, 312.582, 146.626, 305.975, 142.615, 299.84, 133.884, 285.446, 129.4, 261.377, 128.693, 242.736, 129.4, 227.398, 124.917, 214.891, 113.826, 185.395, 106.04, 161.562, 107.219 )
+polygon = PoolVector2Array( 135.134, 110.523, 117.766, 107.39, 108.635, 101.154, 104.848, 86.0089, 106.407, 78.659, 111.53, 66.6318, 112.644, 59.0592, 106.853, 54.6047, 92.153, 53.0456, 86.5849, 55.0501, 87.253, 66.1864, 87.9212, 73.3136, 83.6894, 87.3452, 79.4577, 96.0315, 72.7759, 102.268, 60.5403, 106.087, 36.4718, 103.604, 29.1114, 101.597, 25.1129, 96.2542, 18.6538, 82.2225, 8.63124, 72.8681, 0.167679, 60.3955, 0.167679, 52.8229, 0.835854, 46.5866, 4.40724, 41.8561, 11.0812, 43.6912, 15.9811, 42.5776, 19.5447, 39.4594, 21.1038, 35.4504, 18.2084, 30.105, 11.5266, 25.6505, 6.53096, 20.8549, -1.02005, 8.34852, -6.29132, 6.27344, -12.7503, 6.71889, -18.7177, 9.52837, -23.4411, 12.9552, -33.4637, 30.9959, -34.5276, 37.3727, -37.9182, 52.8229, -45.7136, 65.9636, -53.9544, 72.4227, -58.6316, 81.7771, -56.6271, 95.3633, -51.2817, 108.95, -36.6513, 127.277, -19.2727, 180.288, 31.7467, 281.905, 163.723, 298.284, 199.631, 379.864, 339.482, 413.567, 624.16, 471.384, 687.013, 491.781, 699.911, 505.472, 708.244, 508.846, 715.586, 523.529, 720.745, 515.394, 721.142, 525.117, 725.507, 521.545, 730.667, 522.14, 732.849, 528.49, 741.183, 516.981, 747.136, 517.378, 750.311, 522.14, 752.493, 561.627, 755.47, 509.639, 760.827, 508.647, 763.605, 512.417, 767.772, 559.047, 771.741, 523.728, 778.289, 511.227, 780.471, 516.386, 785.63, 514.203, 789.996, 522.14, 792.377, 539.205, 794.361, 517.576, 798.329, 515.195, 801.703, 519.164, 806.266, 530.077, 808.846, 524.72, 814.227, 523.767, 818.722, 530.697, 820.595, 573.398, 824.341, 517.212, 828.166, 515.569, 831.944, 542.945, 835.747, 505.385, 839.283, 499.021, 840.52, 534.2, 842.111, 551.347, 845.116, 538.796, 849.005, 548.342, 850.419, 533.67, 848.121, 521.295, 848.652, 503.618, 852.894, 509.628, 856.253, 514.931, 859.612, 524.477, 861.026, 554.706, 864.562, 503.971, 867.92, 500.436, 872.34, 501.319, 875.345, 504.678, 878.704, 522.002, 879.588, 509.098, 882.593, 527.836, 885.068, 507.86, 887.543, 521.295, 888.957, 503.794, 892.846, 503.618, 895.144, 509.098, 897.796, 529.781, 899.033, 502.38, 901.331, 499.375, 904.336, 501.673, 906.811, 522.709, 909.809, 497.952, 918.943, 512.756, 923.983, 503.936, 932.374, 512.693, 944.388, 502.348, 997.475, 500.599, 1005.8, 499.41, 1018.29, 497.626, 1022.3, 500.896, 1027.35, 504.315, 1030.48, 507.585, 1031.52, 523.788, 1032.41, 519.775, 1035.53, 509.369, 1037.61, 510.41, 1038.35, 515.018, 1038.8, 531.815, 1040.44, 517.099, 1041.71, 510.266, 1042.98, 506.272, 1042.24, 515.417, 1042.34, 519.306, 1042.57, 522.309, 1043.57, 532.487, 1051.08, 536.825, 1048.58, 539.662, 1056.34, 542.221, 1053.92, 545.502, 1057.52, 549.667, 1064.85, 548.377, 1071.96, 548.771, 1079.81, 549.437, 1086.04, 550.232, 1094.25, 550.232, 1101.14, 549.569, 1108.82, 548.907, 1116.41, 545.564, 1119.56, 539.895, 1120.82, 531.863, 1124.29, 523.201, 1127.12, 518.003, 1133.89, 511.704, 1138.78, 508.712, 1146.65, 508.554, 1154.21, 509.971, 1158.93, 510.129, 1163.03, 508.869, 1167.6, 501.624, 1171.53, 495.325, 1179.09, 489.183, 1193.74, 481.781, 1221.65, 482.327, 1246.03, 480.543, 1255.69, 484.26, 1261.37, 487.758, 1264.72, 492.213, 1270.51, 494.885, 1275.85, 496.89, 1281.05, 496.261, 1295.9, 490.588, 1304.91, 480.41, 1314.09, 465.726, 1316.53, 447.029, 1316.77, 435.938, 1314.41, 422.488, 1310.16, 405.734, 1308.51, 388.273, 1304.97, 376.946, 1300.48, 365.148, 1297.33, 352.9, 1295.83, 344.659, 1293.02, 338.291, 1289.28, 333.609, 1284.03, 328.365, 1278.24, 315.486, 1275.99, 310.898, 1272.81, 307.901, 1269.44, 305.373, 1265.89, 301.604, 1262.58, 299.362, 1257.63, 298.418, 1251.85, 298.536, 1246.42, 298.182, 1240.88, 297.592, 1235.33, 296.767, 1232.03, 295.705, 1228.72, 299.716, 1230.49, 306.795, 1223.89, 303.964, 1225.96, 312.081, 1218.69, 308.093, 1220.34, 316.576, 1218.09, 318.636, 1214.33, 314.11, 1214.91, 322.382, 1211.54, 321.633, 1210.97, 328.001, 1203.39, 334.376, 1191.09, 343.504, 1180.97, 347.869, 1166.48, 354.417, 1152.59, 358.584, 1141.48, 357.592, 1129.97, 355.806, 1120.65, 360.171, 1108.94, 361.56, 1099.61, 357.79, 1090.68, 349.655, 1082.78, 344.013, 1071.5, 341.661, 1064.89, 341.189, 1059.23, 334.818, 1057.1, 319.244, 1054.27, 311.693, 1050.5, 323.02, 1046.48, 324.672, 1047.19, 308.862, 1041.53, 318.3, 1032.84, 323.515, 1026.48, 324.045, 1019.33, 316.629, 1014.83, 309.477, 1005.29, 306.829, 995.801, 307.513, 966.959, 319.874, 959.093, 332.609, 953.848, 351.338, 930.25, 388.421, 887.174, 426.253, 829.863, 440.862, 777.048, 440.487, 716.741, 427.377, 692.019, 410.896, 688.273, 390.669, 687.15, 366.321, 675.163, 349.84, 666.052, 327.394, 655.67, 313.944, 647.883, 310.404, 641.702, 310.115, 630.657, 312.056, 617.672, 307.571, 604.944, 294.136, 569.418, 273.401, 546.739, 275.921, 500.752, 255.762, 498.232, 246.312, 494.453, 243.478, 490.043, 249.777, 460.134, 246.769, 451.85, 242.252, 439.666, 244.503, 428.939, 241.59, 416.961, 237.764, 405.042, 234.056, 394.447, 226.904, 385.972, 211.542, 386.237, 196.974, 390.21, 181.082, 388.885, 174.461, 385.707, 171.282, 371.934, 172.077, 355.777, 160.688, 344.202, 143.559, 335.707, 141.671, 334.999, 130.816, 332.168, 139.547, 328.156, 143.323, 321.077, 146.862, 312.582, 146.626, 305.975, 142.615, 299.84, 133.884, 285.446, 129.4, 261.377, 128.693, 242.736, 129.4, 227.398, 124.917, 214.891, 113.826, 185.395, 106.04, 161.562, 107.219 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment"]
-occluder = SubResource( 5 )
+occluder = SubResource( 12 )
 
 [node name="GroundSegment2" type="StaticBody2D" parent="Env"]
 position = Vector2( -130, 96 )
@@ -1533,7 +1533,7 @@ polygon = PoolVector2Array( 196.014, 35.7209, 205.924, 39.0244, 207.576, 52.4746
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment2"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment2"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment3" type="StaticBody2D" parent="Env"]
 position = Vector2( -131, 95 )
@@ -1547,7 +1547,7 @@ polygon = PoolVector2Array( 724.871, 200.656, 758.024, 136.473, 763.44, 133.211,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment3"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment3"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment4" type="StaticBody2D" parent="Env"]
 position = Vector2( -167, 100 )
@@ -1561,7 +1561,7 @@ polygon = PoolVector2Array( 797.412, 197.683, 831.945, 133.633, 828.373, 152.483
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment4"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment4"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="RopeBridge" type="Node2D" parent="Env"]
 position = Vector2( 677.783, 421.21 )
@@ -1601,7 +1601,7 @@ polygon = PoolVector2Array( 802.688, 195.009, 831.945, 133.633, 828.373, 152.483
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment6"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment6"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment5" type="StaticBody2D" parent="Env"]
 position = Vector2( -137, 100 )
@@ -1615,7 +1615,7 @@ polygon = PoolVector2Array( 795.024, 197.133, 853.734, 107.044, 895.403, 103.472
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment5"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment5"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment7" type="StaticBody2D" parent="Env"]
 position = Vector2( -57, 100 )
@@ -1623,13 +1623,13 @@ physics_material_override = ExtResource( 6 )
 script = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Env/GroundSegment7"]
-position = Vector2( -0.422241, 0.374573 )
-polygon = PoolVector2Array( 813.816, 184.628, 862.827, 107.441, 1171.1, 84.8657, 1252.75, 132.86, 1255.42, 144.752, 1255.72, 152.482, 1217.6, 247.867, 1213.04, 252.63, 1208.06, 258.033, 1204.26, 263.739, 1200.55, 271.123, 1195.86, 275.805, 1190.67, 278.081, 1185.73, 277.345, 1179.73, 278.186, 1175.95, 277.976, 1173.53, 276.82, 1171.96, 273.771, 1172.17, 268.516, 1170.17, 265.257, 1167.54, 266.308, 1167, 270.123, 1163.53, 270.047, 1162.93, 272.924, 1161.05, 271.337, 1159.66, 272.428, 1157.97, 269.65, 1156.28, 266.773, 1154.24, 263.161, 1136.93, 251.201, 1113.89, 231.601, 1094.82, 205.115, 1070.19, 206.704, 1054.56, 188.428, 1019.07, 178.628, 989.668, 170.417, 932.457, 177.304, 886.043, 191.97, 867.192, 196.732, 824.928, 197.327, 816.792, 192.367 )
+position = Vector2( -0.422241, 0.256577 )
+polygon = PoolVector2Array( 813.816, 184.628, 862.827, 107.441, 1171.1, 84.8657, 1252.75, 132.86, 1255.42, 144.752, 1255.72, 152.482, 1217.6, 247.867, 1213.04, 252.63, 1208.06, 258.033, 1204.26, 263.739, 1200.55, 271.123, 1195.86, 275.805, 1190.48, 277.657, 1185.76, 276.123, 1180.69, 277.185, 1177.26, 277.185, 1175.02, 275.415, 1172.78, 272.584, 1172.17, 268.516, 1169.95, 264.207, 1166.41, 265.269, 1166.41, 268.454, 1164.05, 268.572, 1163.46, 271.758, 1162.04, 269.162, 1159.92, 270.932, 1158.27, 267.039, 1155.79, 263.617, 1152.02, 260.903, 1136.93, 251.201, 1113.89, 231.601, 1094.82, 205.115, 1070.19, 206.704, 1054.56, 188.428, 1019.07, 178.628, 989.668, 170.417, 932.457, 177.304, 886.043, 191.97, 867.192, 196.732, 824.928, 197.327, 816.792, 192.367 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment7"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment7"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment8" type="StaticBody2D" parent="Env"]
 position = Vector2( -49, 108 )
@@ -1643,7 +1643,7 @@ polygon = PoolVector2Array( 1213.67, 264.625, 1212.86, 274.68, 1213.26, 280.435,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment8"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment8"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment9" type="StaticBody2D" parent="Env"]
 position = Vector2( -57, 100 )
@@ -1657,7 +1657,7 @@ polygon = PoolVector2Array( 974.786, 574.026, 974.203, 571.047, 971.951, 569.061
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment9"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment9"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment10" type="StaticBody2D" parent="Env"]
 position = Vector2( -57, 100 )
@@ -1671,7 +1671,7 @@ polygon = PoolVector2Array( 743.99, 608.923, 740.426, 611.595, 736.912, 611.145,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment10"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment10"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment11" type="StaticBody2D" parent="Env"]
 position = Vector2( -57, 100 )
@@ -1685,7 +1685,7 @@ polygon = PoolVector2Array( 693.258, 603.35, 690.585, 608.472, 684.795, 608.695,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment11"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment11"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment12" type="StaticBody2D" parent="Env"]
 position = Vector2( -57, 100 )
@@ -1699,7 +1699,7 @@ polygon = PoolVector2Array( 637.83, 580.747, 636.108, 577.437, 632.93, 576.642, 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment12"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment12"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment13" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1713,7 +1713,7 @@ polygon = PoolVector2Array( 584.363, 564.733, 581.449, 563.709, 576.961, 564.103
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment13"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment13"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment14" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1727,7 +1727,7 @@ polygon = PoolVector2Array( 476.974, 636.946, 474.082, 627.3, 471.106, 616.784, 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment14"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment14"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment16" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1741,7 +1741,7 @@ polygon = PoolVector2Array( 56.3795, 828.538, 46.866, 880.685, 39.4414, 846.037,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment16"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment16"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment15" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1755,7 +1755,7 @@ polygon = PoolVector2Array( 609.267, 495.741, 596.349, 490.396, 580.758, 485.496
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment15"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment15"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment17" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1769,7 +1769,7 @@ polygon = PoolVector2Array( -17.5475, 825.218, -157.636, 707.353, -267.96, 869.2
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment17"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment17"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment18" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1783,7 +1783,7 @@ polygon = PoolVector2Array( 675.702, 1497.54, 671.14, 1388.05, 662.006, 1372.93,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment18"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment18"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment19" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1796,7 +1796,7 @@ polygon = PoolVector2Array( 1776.93, 2406.89, 1854.29, 2359.8, 2024.16, 2305.98,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment19"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment19"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment20" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1810,7 +1810,7 @@ polygon = PoolVector2Array( 1298.44, 2366.21, 843.195, 2225.45, 465.309, 9514.4,
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment20"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment20"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="GroundSegment21" type="StaticBody2D" parent="Env"]
 position = Vector2( -53, 98 )
@@ -1824,7 +1824,7 @@ polygon = PoolVector2Array( 1332.71, 13062.6, 1345.11, 13060.3, 1351.63, 13058.6
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Env/GroundSegment21"]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Env/GroundSegment21"]
-occluder = SubResource( 6 )
+occluder = SubResource( 13 )
 
 [node name="CoreLight" type="Light2D" parent="Env"]
 position = Vector2( 1551.35, 14313.5 )
