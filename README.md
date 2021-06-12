@@ -1,5 +1,7 @@
 # Todd the Caver
 
+![alt text](https://raw.githubusercontent.com/samuelbigos/todd_the_caver/master/promo/gif.gif "Gif")
+
 Navigate your way through a deserted caving system and uncover the truth.
 
 You will control Todd with each limb individually, using the mouse to fling yourself around with disregard for poor Todd's wellbeing.
